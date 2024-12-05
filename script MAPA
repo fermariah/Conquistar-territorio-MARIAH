@@ -1,0 +1,60 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Mapa : MonoBehaviour //método para implementar os conceitos array, método c/ parâmetro, método c/retorno e FOR
+{
+   string[] mapa; //array
+
+    void Start() //método para iniciar o mapa com valores padrão
+    {
+        InicializarMapa();
+        ExibirMapa();
+    }
+
+    void InicializarMapa() //método para inicializar o mapa com valores padrão
+    {
+        for (int i = 0; i < mapa.Length; i++)
+        {
+            mapa[i] = "neutro";  
+        }
+    }
+
+    void ExibirMapa() //método para exibir o mapa (simulando a visualização do território)
+    {
+        string mapaExibicao = "Estado do Mapa: \n";
+        for (int i = 0; i < mapa.Length; i++)
+        {
+            mapaExibicao += $"Território {i + 1}: {mapa[i]}\n";
+        }
+        Debug.Log(mapaExibicao);  
+    }
+
+    
+    public void ConquistarTerritorio(int index, string novaCor) //método c/parâmetro para verificar se o índice está dentro do tamanho do array, se sim, altera o valor do território
+    {
+        if (index >= 0 && index < mapa.Length)
+        {
+            mapa[index] = novaCor;  
+            Debug.Log($"Território {index + 1} conquistado pela cor {novaCor}");
+        }
+        else
+        {
+            Debug.Log("Índice inválido");
+        }
+    }
+
+    
+    public string ObterEstadoTerritorio(int index) //método c/ retorno verificar se o índice está dentro do tamanho do array, se sim, retorna o estado do território
+    {
+        if (index >= 0 && index < mapa.Length)
+        {
+            return mapa[index];  
+        }
+        else
+        {
+            return "índice inválido";  
+        }
+    }
+}
+    
